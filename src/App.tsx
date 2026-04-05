@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as HashRouter, Routes, Route } from 'react-router-dom';
 import { SCPLayout } from './components/SCPLayout';
 import { Home } from './pages/Home';
 import { Cinfo } from './pages/Cinfo';
@@ -11,10 +11,10 @@ import { TOCProvider } from './context/TOCContext';
 
 const App: React.FC = () => {
   return (
-    <Router>
+    <HashRouter>
       <TOCProvider>
         <SCPLayout>
-          <Routes basename="/Events-React/">
+          <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/cinfo" element={<Cinfo />} />
             <Route path="/cassie" element={<CASSIE />} />
@@ -24,7 +24,7 @@ const App: React.FC = () => {
           </Routes>
         </SCPLayout>
       </TOCProvider>
-    </Router>
+    </HashRouter>
   );
 };
 
