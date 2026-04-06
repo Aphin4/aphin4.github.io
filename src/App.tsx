@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter as HashRouter, Routes, Route } from 'react-router-dom';
+import { useEffect} from 'react';
+import { HashRouter, Routes, Route, useLocation,  } from 'react-router-dom';
 import { SCPLayout } from './components/SCPLayout';
 import { Home } from './pages/Home';
 import { Cinfo } from './pages/Cinfo';
@@ -8,10 +9,26 @@ import { Information } from './pages/Information';
 import { History } from './pages/History';
 import { CASSIE } from './pages/CASSIE';
 import { TOCProvider } from './context/TOCContext';
+import ReactGA from 'react-ga4';
+
+const MEASUREMENT_ID = "G-YMML54VQ0W"; 
+ReactGA.initialize(MEASUREMENT_ID);
+
+ReactGA.send({ hitType: "pageview", page: window.location.hash || window.location.pathname });
 
 const App: React.FC = () => {
+
+const Analytics = () => {
+  const location = useLocation();
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: location.pathname + location.hash });
+  }, [location]);
+  return null;
+};
+  
   return (
     <HashRouter>
+      <Analytics />
       <TOCProvider>
         <SCPLayout>
           <Routes>
