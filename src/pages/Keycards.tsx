@@ -82,7 +82,7 @@ export const Keycards: React.FC = () => {
           <InfoSection title="Готовые ключ-карты">
               <div>
                 <p className="text-zinc-400 my-4 font-bold uppercase tracking-widest text-sm border-l-2 border-scp-orange pl-4">
-                  Используйте кнопку справа от текста для копирования
+                  Введите id игрока/игроков и спользуйте кнопку справа от текста для копирования
                 </p>
                 <AccordionCopy items={database5} />
               </div>

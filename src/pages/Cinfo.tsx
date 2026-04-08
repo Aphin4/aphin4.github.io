@@ -12,7 +12,7 @@ export const Cinfo: React.FC = () => {
         <div className="max-w-2xl">
            <h1 className="text-5xl font-black uppercase tracking-[0.19em] text-white">Custom-Info</h1>
            <p className="text-zinc-400 mt-4 font-bold uppercase tracking-widest text-base border-l-2 border-scp-orange pl-4">
-             Используйте кнопку справа от текста для копирования
+             Введите id игрока/игроков и спользуйте кнопку справа от текста для копирования
            </p>
         </div>
       </div>

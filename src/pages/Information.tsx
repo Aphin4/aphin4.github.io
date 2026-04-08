@@ -319,7 +319,7 @@ export const Information: React.FC = () => {
                   <div className="col-span-8 p-4"><Code>Spot - освещение определенной области, как если бы на нее светил фонарь</Code><br /><Code>Directional - освещение всей карты в каком-то направлении</Code><br /><Code>Point - освещение из точки, все остальные типы не отличаются от него</Code></div>
                 </div>
                 <div className="h-px bg-scp-orange/30 mt-6 mb-6" />
-                <h4 className='text-xl font-black uppercase tracking-widest text-white group-hover:scp-glitch border-l-2 border-scp-orange pl-3'>Свойства дверей</h4>
+                <h4 className='text-xl font-black uppercase tracking-widest text-white group-hover:scp-glitch border-l-2 border-scp-orange pl-3'>Свойства двери</h4>
                 <div className="grid grid-cols-12 border border-zinc-800 rounded-lg divide-x divide-y divide-zinc-800  mt-4">
                   <div className="col-span-2 row-span-1 p-4 flex items-center justify-center"><Code>DoorType</Code></div>
                   <div className="col-span-3 p-4 flex items-center">Тип двери</div>
@@ -339,6 +339,102 @@ export const Information: React.FC = () => {
                   <div className="col-span-2 row-span-1 p-4 flex items-center justify-center"><Code>RequireAll</Code></div>
                   <div className="col-span-3 p-4 flex items-center">Требуются ли все выше доступы для открытия двери</div>
                   <div className="col-span-7 p-4"><Code>False - не требуются</Code><br /><Code>True - требуются</Code></div>
+                </div>
+                <div className="h-px bg-scp-orange/30 mt-6 mb-6" />
+                <h4 className='text-xl font-black uppercase tracking-widest text-white group-hover:scp-glitch border-l-2 border-scp-orange pl-3'>Свойства ItemSpawnpoint</h4>
+                <div className="grid grid-cols-12 border border-zinc-800 rounded-lg divide-x divide-y divide-zinc-800  mt-4">
+                  <div className="col-span-2 row-span-1 p-4 flex items-center justify-center"><Code>ItemType</Code></div>
+                  <div className="col-span-5 p-4 flex items-center">Предмет который будет появляться</div>
+                  <div className="col-span-5 p-4">Принимает текстовый или числовой ID предмета:<br /><Code>25</Code><br /><Code>GrenadeHE</Code></div>
+                  <div className="col-span-2 row-span-1 p-4 flex items-center justify-center"><Code>Weight</Code></div>
+                  <div className="col-span-5 p-4 flex items-center">Тяжесть предмета, влияет только на скорость подбора предмета в первый раз</div>
+                  <div className="col-span-5 p-4"><Code>1</Code></div>
+                  <div className="col-span-2 row-span-1 p-4 flex items-center justify-center"><Code>AttachmentsCode</Code></div>
+                  <div className="col-span-5 p-4 flex items-center">Влияет на обвесы для оружия</div>
+                  <div className="col-span-5 p-4"><Code>512</Code></div>
+                  <div className="col-span-2 row-span-1 p-4 flex items-center justify-center"><Code>NumberOfItems</Code></div>
+                  <div className="col-span-5 p-4 flex items-center">Количество предметов появляющихся одновременно</div>
+                  <div className="col-span-5 p-4"><Code>1</Code><br /><span className='text-red-600'>Значения свыше 100 могут положить сервер</span></div>
+                  <div className="col-span-2 row-span-1 p-4 flex items-center justify-center"><Code>NumberOfUses</Code></div>
+                  <div className="col-span-5 p-4 flex items-center">Сколько раз можно будет подобрать предмет</div>
+                  <div className="col-span-5 p-4"><Code>1</Code></div>
+                  <div className="col-span-2 row-span-1 p-4 flex items-center justify-center"><Code>UseGravity</Code></div>
+                  <div className="col-span-5 p-4 flex items-center">Подчиняется ли предмет закону гравитации</div>
+                  <div className="col-span-5 p-4"><Code>False - предмет будто в космосе</Code><br /><Code>True - нормальное поведение предмета</Code></div>
+                  <div className="col-span-2 row-span-1 p-4 flex items-center justify-center"><Code>CanBePickedUp</Code></div>
+                  <div className="col-span-5 p-4 flex items-center">Можно ли поднять предмет</div>
+                  <div className="col-span-5 p-4"><Code>False - нет</Code><br /><Code>True - да</Code></div>
+                </div>
+                <div className="h-px bg-scp-orange/30 mt-6 mb-6" />
+                <h4 className='text-xl font-black uppercase tracking-widest text-white group-hover:scp-glitch border-l-2 border-scp-orange pl-3'>Свойства Locker</h4>
+                <div className="grid grid-cols-12 border border-zinc-800 rounded-lg divide-x divide-y divide-zinc-800  mt-4">
+                  <div className="col-span-2 row-span-1 p-4 flex items-center justify-center"><Code>LockerType</Code></div>
+                  <div className="col-span-2 p-4 flex items-center">Тип шкафчика</div>
+                  <div className="col-span-8 p-4"><Code>PedestalScp`подставьте номер SCP` - ящики всех карманных SCP игры</Code><br />
+                  <Code>PedestalScpAntiScp207 - ящик с анти-колой</Code><br />
+                  <Code>LargeGun - большой, оружейный шкаф</Code><br />
+                  <Code>RifleRack - контейнер с E11-SR</Code><br />
+                  <Code>Misc - шкаф с ключ-картами, аптечками, фонариками и т.д.</Code><br />
+                  <Code>Medkit - шкафчик с аптечкой и обезболивающим</Code><br />
+                  <Code>Adrenaline - шкафчик с аптечкой и адреналином</Code><br />
+                  <Code>ExperimentalWeapon - контейнер с экспериментальным оружием</Code><br />
+                  <Code>None - удаляет шкафчик</Code>
+                  </div>
+                  <div className="col-span-2 row-span-1 p-4 flex items-center justify-center"><Code>Loot</Code><br /><Code>Chambers</Code></div>
+                  <div className="col-span-4 p-4 flex items-center">Изменяет заготовленные пресеты вещей в шкафчике</div>
+                  <div className="col-span-6 p-4"><Code>add ???</Code><br /><Code>remove ???</Code></div>
+                </div>
+                <div className="h-px bg-scp-orange/30 mt-6 mb-6" />
+                <h4 className='text-xl font-black uppercase tracking-widest text-white group-hover:scp-glitch border-l-2 border-scp-orange pl-3'>Свойства Teleport</h4>
+                <div className="grid grid-cols-12 border border-zinc-800 rounded-lg divide-x divide-y divide-zinc-800  mt-4">
+                  <div className="col-span-2 row-span-1 p-4 flex items-center justify-center"><Code>Targets</Code></div>
+                  <div className="col-span-5 p-4 flex items-center">Id телепортов к которым телепортирует телепорт</div>
+                  <div className="col-span-5 p-4"><Code>add id</Code><br /><Code>remove id</Code></div>
+                  <div className="col-span-2 row-span-1 p-4 flex items-center justify-center"><Code>Cooldown</Code></div>
+                  <div className="col-span-5 p-4 flex items-center">Задержка между телепортациями</div>
+                  <div className="col-span-5 p-4"><Code>1</Code></div>
+                </div>
+                <div className="h-px bg-scp-orange/30 mt-6 mb-6" />
+                <h4 className='text-xl font-black uppercase tracking-widest text-white group-hover:scp-glitch border-l-2 border-scp-orange pl-3'>Свойства Workstation</h4>
+                <div className="grid grid-cols-12 border border-zinc-800 rounded-lg divide-x divide-y divide-zinc-800  mt-4">
+                  <div className="col-span-2 row-span-1 p-4 flex items-center justify-center"><Code>IsInteractable</Code></div>
+                  <div className="col-span-5 p-4 flex items-center">Можно ли взаимодействовать с этим столом</div>
+                  <div className="col-span-5 p-4"><Code>False - нет</Code><br /><Code>True - да</Code></div>
+                </div>
+                <div className="h-px bg-scp-orange/30 mt-6 mb-6" />
+                <h4 className='text-xl font-black uppercase tracking-widest text-white group-hover:scp-glitch border-l-2 border-scp-orange pl-3'>Свойства TextToy</h4>
+                <div className="grid grid-cols-12 border border-zinc-800 rounded-lg divide-x divide-y divide-zinc-800  mt-4">
+                  <div className="col-span-2 row-span-1 p-4 flex items-center justify-center"><Code>Text</Code></div>
+                  <div className="col-span-5 p-4 flex items-center">Текст, который будет на вашем объекте</div>
+                  <div className="col-span-5 p-4"><Code>{"<color=red><size=67>Hello world!"}</Code></div>
+                </div>
+                <div className="h-px bg-scp-orange/30 mt-6 mb-6" />
+                <h4 className='text-xl font-black uppercase tracking-widest text-white group-hover:scp-glitch border-l-2 border-scp-orange pl-3'>Свойства Scp079Camera</h4>
+                <div className="grid grid-cols-12 border border-zinc-800 rounded-lg divide-x divide-y divide-zinc-800  mt-4">
+                  <div className="col-span-2 row-span-1 p-4 flex items-center justify-center"><Code>CameraType</Code></div>
+                  <div className="col-span-5 p-4 flex items-center">Внешний вид камеры</div>
+                  <div className="col-span-5 p-4"><Code>Lcz - камера из Легкой Зоны</Code><br /><Code>
+                    Hcz - камера из Тяжелой Зоны</Code><br /><Code>
+                    Ez - камера из Офисной Зоны</Code><br /><Code>  
+                    EzArm - усиленная камера из Офисной Зоны</Code><br /><Code>
+                    Sz - камера с Поверхности</Code></div>
+                  <div className="col-span-2 row-span-1 p-4 flex items-center justify-center"><Code>Label</Code></div>
+                  <div className="col-span-5 p-4 flex items-center">Название камеры в интерфейсе SCP-079</div>
+                  <div className="col-span-5 p-4"><Code>TestRoom</Code></div>
+                </div>
+                <div className="h-px bg-scp-orange/30 mt-6 mb-6" />
+                <h4 className='text-xl font-black uppercase tracking-widest text-white group-hover:scp-glitch border-l-2 border-scp-orange pl-3'>Свойства ShootingTarget</h4>
+                <div className="grid grid-cols-12 border border-zinc-800 rounded-lg divide-x divide-y divide-zinc-800  mt-4">
+                  <div className="col-span-2 row-span-1 p-4 flex items-center justify-center"><Code>TargetType</Code></div>
+                  <div className="col-span-5 p-4 flex items-center">Тип мишени</div>
+                  <div className="col-span-5 p-4"><Code>Sport</Code><br /><Code>ClassD</Code><br /><Code>Binary</Code></div>
+                </div>
+                <div className="h-px bg-scp-orange/30 mt-6 mb-6" />
+                <h4 className='text-xl font-black uppercase tracking-widest text-white group-hover:scp-glitch border-l-2 border-scp-orange pl-3'>Другие объекты</h4>
+                <div className="mt-4">
+                  <Code>PlayerSpawnpoint</Code> - работает некорректно<br />
+                  <Code>Capybara</Code> - у нее нет свойств<br />
+                  <Code>Interactable, Waypoint</Code> - не нужны вне схематика
                 </div>
                 </p>
               </div>

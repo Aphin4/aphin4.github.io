@@ -140,8 +140,8 @@ export const SCPLayout: React.FC<{ children: React.ReactNode }> = ({ children })
 
           <div className="p-6 border-t border-zinc-800 bg-zinc-900/20">
             <div className="flex items-center gap-2 text-zinc-500">
-              <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
-              <span className="text-[10px] uppercase font-bold tracking-tighter">Соединение нестабильно</span>
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+              <span className="text-[10px] uppercase font-bold tracking-tighter">Соединение стабильно</span>
             </div>
           </div>
         </aside>
