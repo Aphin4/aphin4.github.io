@@ -70,3 +70,10 @@ export const Group = ({ title, children, header = true }: { title: string; child
     </div>
   );
 };
+
+export const StatCardOnLoading: React.FC = () => (
+  <div className="p-4 bg-zinc-900 border border-zinc-800 rounded-lg">
+    <div className="h-2.5 bg-zinc-700 rounded-full w-24 mb-2 animate-pulse"></div>
+    <div className="h-5 bg-zinc-700 rounded-full w-12 animate-pulse"></div>
+  </div>
+);

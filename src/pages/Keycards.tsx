@@ -5,11 +5,11 @@ import keycard3 from '../assets/keycard3.png';
 import keycard4 from '../assets/keycard4.png';
 import keycard5 from '../assets/keycard5.png';
 import { Link } from 'react-router-dom';
-import { AccordionCopy } from '@/components/AccordionCopy';
-import { database5 } from '@/components/Accordion.data';
 import { useTOC } from '../context/TOCContext';
-import { InfoSection } from '@/components/Modules';
+import { InfoSection } from '../components/Modules';
 import { Code } from '@/components/Modules';
+import AccordionContainer from '../components/AccordionContainer';
+import { GoogleSheetsDataProvider } from '../context/GoogleSheetsDataContext';
 
 const keycardImages = [
   { src: keycard2, code: 'keycardcustommetalcase' },
@@ -20,6 +20,7 @@ const keycardImages = [
 
 export const Keycards: React.FC = () => {
   useTOC(true);
+
   return (
     <div className="space-y-12 pb-24">
       <div className="border-b border-zinc-800 pb-10 flex items-center justify-between">
@@ -84,7 +85,7 @@ export const Keycards: React.FC = () => {
                 <p className="text-zinc-400 my-4 font-bold uppercase tracking-widest text-sm border-l-2 border-scp-orange pl-4">
                   Введите id игрока/игроков и спользуйте кнопку справа от текста для копирования
                 </p>
-                <AccordionCopy items={database5} />
+                <GoogleSheetsDataProvider><AccordionContainer databaseName='database5'/></GoogleSheetsDataProvider>
               </div>
           </InfoSection>
     </div>

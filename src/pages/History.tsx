@@ -21,11 +21,11 @@ export const History: React.FC = () => {
               <p className='text-zinc-300 text-sm leading-relaxed font-medium space-y-4'>Этот сайт был создан 7 июня 2025 года. Однако первая публикация состоялась немного позже. <br />Она включала в себя лишь C.A.S.S.I.E от бывшего ГИМ(Frezee, ныне глава отдела) и скромный список кастом инфо от бывшего главы отдела (ComicManatee926).</p>
             </InfoSection>
           </div>
-          <InfoSection title="Последние изменения - 08.04.2026">
+          <InfoSection title="Последние изменения - 11.04.2026">
             <p className='text-zinc-300 text-sm leading-relaxed font-medium space-y-4'>
               <ul className='text-zinc-300 text-base leading-relaxed list-disc list-outside pl-5 pt-4 space-y-2'>
-                <li>Вся запланированная информация была перенесена.</li>
-                <li>В custom-info и ключ-карты были добавлены поял для ввода id игроков.</li>
+                <li>Данные Custom-Info, CASSIE и ключ-карт подгружаются динамически, что может вызывать проблемы при первой перезагрузке.</li>
+                <li>Иправлено перепутанное количество Cusom-Info и CASSIE на главной странице.</li>
               </ul>
             </p>
           </InfoSection>
@@ -169,6 +169,14 @@ export const History: React.FC = () => {
                 <li>Сайт полностью переписан на React.</li>
                 <li>Вновь полностью обновлен дизайн.</li>
                 <li>Каждая страница частично переписана, страница c информацией частично урезана.</li>
+              </ul>
+              </div>
+            </Group>
+            <Group title="8 Апреля">
+              <div className="space-y-2">
+              <ul className='text-zinc-300 text-base leading-relaxed list-disc list-outside pl-5 pt-4 space-y-2'>
+                <li>Вся запланированная информация была перенесена.</li>
+                <li>В custom-info и ключ-карты были добавлены поял для ввода id игроков.</li>
               </ul>
               </div>
             </Group>

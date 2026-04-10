@@ -1,14 +1,8 @@
 import React from 'react';
 import {  Users, Info, ArrowRight, Megaphone, IdCard, History } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { database1, database2, database3, database4, database5 } from '@/components/Accordion.data';
-
-const TCinfo = database3.length + database4.length
-const TotalCinfo = TCinfo.toString();
-const TCassie = database1.length + database2.length
-const TotalCassie = TCassie.toString();
-const TKeycards = database5.length
-const TotalKeycards = TKeycards.toString();
+import { GoogleSheetsDataProvider } from '../context/GoogleSheetsDataContext'; // <-- Провайдер
+import { StatisticsContainer } from '../components/StatisticsContainer';
 
 const Card = ({ title, icon: Icon, to, color = "scp-orange" }: { title: string, icon?: any, to: string, color?: string, }) => (
   <Link to={to} className="group relative">
@@ -24,13 +18,6 @@ const Card = ({ title, icon: Icon, to, color = "scp-orange" }: { title: string, 
       <div className="absolute bottom-0 left-0 h-1 w-0 bg-scp-orange group-hover:w-full transition-all duration-500" />
     </div>
   </Link>
-);
-
-const StatCard = ({ label, value }: { label: string, value: string }) => (
-  <div className="p-4 bg-zinc-900 border border-zinc-800 rounded-lg">
-    <div className="text-[10px] text-zinc-500 font-black uppercase tracking-widest mb-1">{label}</div>
-    <div className="text-xl font-mono text-scp-orange font-bold tracking-tighter">{value}</div>
-  </div>
 );
 
 export const Home: React.FC = () => {
@@ -77,10 +64,9 @@ export const Home: React.FC = () => {
         </div>
       <div className='rounded-2xl p-4 relative group border-zinc-800 scp-panel mb-8 -mt-4'>
         <div className='grid grid-cols-1 lg:grid-cols-4 gap-7'>
-          <StatCard label='Всего Custom-Info' value={TotalCinfo} />
-          <StatCard label='Всего CASSIE' value={TotalCassie} />
-          <StatCard label='Всего Ключ-карт' value={TotalKeycards} />
-          <StatCard label="Последнее обновление" value="08.04.2026" />
+          <GoogleSheetsDataProvider>
+            <StatisticsContainer />
+          </GoogleSheetsDataProvider>
         </div>
       </div>
     </div>

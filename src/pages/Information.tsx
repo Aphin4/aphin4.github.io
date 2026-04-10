@@ -1,6 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Maximize2 } from 'lucide-react';
 import { useTOC } from '../context/TOCContext';
 import { Group } from '@/components/Modules';
 import { Code } from '@/components/Modules';
@@ -11,32 +9,6 @@ import other1 from '../assets/other1.png';
 import other2 from '../assets/other2.png';
 import toolgun from '../assets/toolgun.png';
 import other3 from '../assets/other3.png'
-
-
-const Card = ({ children, title }: { children: React.ReactNode, title?: string }) => (
-  <div className="scp-panel p-6 rounded-xl space-y-4">
-    {title && <h3 className="text-xs font-black uppercase tracking-widest text-scp-orange border-b border-zinc-800 pb-2 mb-4">{title}</h3>}
-    {children}
-  </div>
-);
-
-const GalleryGrid = ({ images }: { images: string[] }) => (
-  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-    {images.map((src, i) => (
-      <motion.div 
-        key={i} 
-        whileHover={{ scale: 1.05 }}
-        className="aspect-square relative group overflow-hidden rounded-lg bg-zinc-800 border border-zinc-700"
-      >
-        <img src={src} alt="Gallery" className="w-full h-full object-cover transition-transform group-hover:scale-110" />
-        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-          <Maximize2 className="w-6 h-6 text-scp-orange" />
-        </div>
-      </motion.div>
-    ))}
-  </div>
-);
-
 
 export const Information: React.FC = () => {
   useTOC(true);

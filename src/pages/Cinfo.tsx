@@ -1,11 +1,12 @@
 import React from 'react';
-import { AccordionCopy } from '../components/AccordionCopy';
-import { database3, database4 } from '@/components/Accordion.data';
+import AccordionContainer  from '../components/AccordionContainer';
 import { useTOC } from '../context/TOCContext';
 import { InfoSection } from '@/components/Modules';
+import { GoogleSheetsDataProvider } from '../context/GoogleSheetsDataContext';
 
 export const Cinfo: React.FC = () => {
   useTOC(true);
+
   return (
       <div className="space-y-12 pb-24">
       <div className="border-b border-zinc-800 pb-12 flex items-center justify-between">
@@ -17,11 +18,11 @@ export const Cinfo: React.FC = () => {
         </div>
       </div>
       <InfoSection title="Aphin">
-        <AccordionCopy items={database3} />
+        <GoogleSheetsDataProvider><AccordionContainer databaseName='database1'/></GoogleSheetsDataProvider>
       </InfoSection>
       <div className="border-b border-zinc-800" />
       <InfoSection title="Dev1lmachine">
-        <AccordionCopy items={database4} />
+        <GoogleSheetsDataProvider><AccordionContainer databaseName='database2'/></GoogleSheetsDataProvider>
       </InfoSection>
     </div>
   );

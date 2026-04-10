@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { Home, Users, Info, Megaphone, IdCard, History } from 'lucide-react';
 import { cn } from '../utils/cn';
-import { useTOCState } from '../context/TOCContext';
+import { useTOCState, useTOCRefresh  } from '../context/TOCContext';
 import litery from '../assets/litery.png'
 
 const NavLink = ({ to, children, icon: Icon }: { to: string, children: React.ReactNode, icon: any }) => {
@@ -43,6 +43,7 @@ export const SCPLayout: React.FC<{ children: React.ReactNode }> = ({ children })
   const location = useLocation();
   const contentRef = React.useRef<HTMLDivElement>(null);
   const showTOCContext = useTOCState();
+  const { refreshTrigger } = useTOCRefresh();
 
   React.useEffect(() => {
     if (!showTOCContext) {
@@ -68,7 +69,7 @@ export const SCPLayout: React.FC<{ children: React.ReactNode }> = ({ children })
     }, 100);
 
     return () => clearTimeout(timer);
-  }, [location.pathname, showTOCContext, children]);
+  }, [location.pathname, refreshTrigger, showTOCContext, children]);
 
   const scrollToHeader = (id: string) => {
     const element = document.getElementById(id);
@@ -156,8 +157,6 @@ export const SCPLayout: React.FC<{ children: React.ReactNode }> = ({ children })
               {children}
             </motion.div>
           </div>
-
-          {/* Footer Overlay */}
           <footer className="-mt-16 p-6 border-t border-zinc-900 text-zinc-600 text-[10px] flex justify-between uppercase tracking-widest font-bold">
             <div>Создано Aphin, при помощи mr wdy xiii</div>
             <div>2025-2026</div>

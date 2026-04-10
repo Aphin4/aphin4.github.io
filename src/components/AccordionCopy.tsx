@@ -33,7 +33,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, id, copiedKey, setCopiedKey }
     : item.code;
 
   return (
-    <div className="bg-zinc-900/60 p-3 rounded border border-zinc-800 hover:border-zinc-700 transition-colors w-full overflow-hidden">
+    <div className="bg-zinc-900/60 p-3 rounded border border-zinc-800 hover:border-scp-yellow transition-colors w-full overflow-hidden">
       <div className="flex justify-between items-center mb-2">
         <span className="text-[16px] font-bold text-zinc-300 uppercase tracking-tight truncate flex-1 mr-2">
           {item.name}
@@ -58,7 +58,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, id, copiedKey, setCopiedKey }
           {copiedKey === id ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4 text-zinc-500" />}
         </button>
       </div>
-      <div className="rich-text-preview text-xs opacity-90 whitespace-pre-wrap break-words line-clamp-3 text-[#73737D]">
+      <div className="rich-text-preview text-xs opacity-90 whitespace-pre-wrap wrap-break-word line-clamp-3 text-[#73737D]">
         {hasInput ? (
           <>
             {parts[0]}
