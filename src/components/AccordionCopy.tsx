@@ -116,7 +116,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, id, copiedKey, setCopiedKey }
           )}
         </button>
       </div>
-      <div className="rich-text-preview text-xs opacity-90 whitespace-pre-wrap wrap-break-word line-clamp-3 text-[#73737D]">
+      <div className="rich-text-preview text-xs opacity-90 whitespace-pre-wrap wrap-break-word text-[#73737D]">
         {renderCodeWithInputs()}
       </div>
       
