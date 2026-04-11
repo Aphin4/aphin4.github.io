@@ -23,14 +23,68 @@ interface ItemCardProps {
 }
 
 const ItemCard: React.FC<ItemCardProps> = ({ item, id, copiedKey, setCopiedKey }) => {
-  const [inputValue, setInputValue] = useState('');
-
-  const hasInput = item.code.includes('{{input}}');
-  const parts = hasInput ? item.code.split('{{input}}') : [];
+  const inputMatches = [...item.code.matchAll(/\{\{input(?::([^}]+))?\}\}/g)];
+  const inputCount = inputMatches.length;
   
-  const finalCode = hasInput 
-    ? parts.join(inputValue) 
-    : item.code;
+  const placeholders = inputMatches.map(match => match[1] || '');
+  
+  const [inputValues, setInputValues] = useState<string[]>(
+    new Array(inputCount).fill('')
+  );
+
+  const hasInputs = inputCount > 0;
+
+  const buildFinalCode = (): string => {
+    if (!hasInputs) return item.code;
+
+    let result = item.code;
+    let currentIndex = 0;
+
+    return result.replace(/\{\{input(?::[^}]+)?\}\}/g, () => {
+      const value = inputValues[currentIndex] || '';
+      currentIndex++;
+      return value;
+    });
+  };
+
+  const finalCode = buildFinalCode();
+
+  const updateInputValue = (index: number, value: string) => {
+    const newValues = [...inputValues];
+    newValues[index] = value;
+    setInputValues(newValues);
+  };
+
+  const renderCodeWithInputs = () => {
+    if (!hasInputs) {
+      return <>{item.code}</>;
+    }
+
+    const parts = item.code.split(/(\{\{input(?::[^}]+)?\}\})/);
+    let inputIndex = 0;
+
+    return parts.map((part, idx) => {
+      if (part.match(/\{\{input(?::[^}]+)?\}\}/)) {
+        const currentInputIndex = inputIndex;
+        const placeholder = placeholders[currentInputIndex] || `#${currentInputIndex + 1}`;
+        inputIndex++;
+        
+        return (
+          <input
+            key={`input-${idx}`}
+            type="text"
+            value={inputValues[currentInputIndex]}
+            onChange={(e) => updateInputValue(currentInputIndex, e.target.value)}
+            placeholder={placeholder}
+            onClick={(e) => e.stopPropagation()}
+            className="bg-zinc-800/50 border border-zinc-700 rounded-sm px-2 py-0.5 mx-1 text-xs text-zinc-300 min-w-[60px] max-w-[120px] focus:outline-none focus:ring-1 focus:ring-offset-0 focus:ring-zinc-600 transition-all placeholder:text-zinc-600"
+            style={{ width: `${Math.max(60, placeholder.length * 7)}px` }}
+          />
+        );
+      }
+      return <span key={idx}>{part}</span>;
+    });
+  };
 
   return (
     <div className="bg-zinc-900/60 p-3 rounded border border-zinc-800 hover:border-scp-yellow transition-colors w-full overflow-hidden">
@@ -55,27 +109,27 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, id, copiedKey, setCopiedKey }
           }}
           className="p-1 hover:bg-zinc-800 rounded transition-colors shrink-0"
         >
-          {copiedKey === id ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4 text-zinc-500" />}
+          {copiedKey === id ? (
+            <Check className="w-4 h-4 text-green-400" />
+          ) : (
+            <Copy className="w-4 h-4 text-zinc-500" />
+          )}
         </button>
       </div>
       <div className="rich-text-preview text-xs opacity-90 whitespace-pre-wrap wrap-break-word line-clamp-3 text-[#73737D]">
-        {hasInput ? (
-          <>
-            {parts[0]}
-            <input
-              type="text"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              placeholder=""
-              onClick={(e) => e.stopPropagation()}
-              className="bg-zinc-800/50 border border-zinc-700 rounded-sm px-1 py-0.5 mx-1 text-xs text-zinc-300 w-24 focus:outline-none focus:ring-1 focus:ring-offset-0 focus:ring-zinc-600 transition-all"
-            />
-            {parts[1]}
-          </>
-        ) : (
-          item.code
-        )}
+        {renderCodeWithInputs()}
       </div>
+      
+      {hasInputs && inputValues.some(v => v.length > 0) && (
+        <div className="mt-2 pt-2 border-t border-zinc-800">
+          <div className="text-[10px] text-zinc-600 uppercase tracking-wider mb-1">
+            Результат:
+          </div>
+          <div className="text-xs text-zinc-400 font-mono">
+            {finalCode}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

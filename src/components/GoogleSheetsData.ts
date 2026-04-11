@@ -9,6 +9,9 @@ const SHEETS_CONFIG = [
   { name: 'database3', gid: '1593061573' },
   { name: 'database4', gid: '1924081634' },
   { name: 'database5', gid: '2123056300' },
+  { name: 'database6', gid: '2104192889' },
+  { name: 'database7', gid: '523095603' },
+  { name: 'database8', gid: '1996752332' },
 ];
 
 interface DataItem {

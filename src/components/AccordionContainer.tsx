@@ -4,7 +4,7 @@ import { AccordionCopy } from './AccordionCopy';
 import { useTOCRefresh } from '../context/TOCContext';
 
 interface AccordionContainerProps {
-  databaseName: 'database1' | 'database2' | 'database3' | 'database4' | 'database5';
+  databaseName: 'database1' | 'database2' | 'database3' | 'database4' | 'database5' | 'database6' | 'database7' | 'database8';
 }
 
 const AccordionContainer: React.FC<AccordionContainerProps> = ({ databaseName }) => {
@@ -20,11 +20,11 @@ const AccordionContainer: React.FC<AccordionContainerProps> = ({ databaseName })
   }, [loading, error, data, databaseName, refreshTOC]);
 
   if (loading) {
-    return <div>Загрузка информации</div>;
+    return <div className='flex justify-center text-2xl text-scp-orange'>Загрузка информации</div>;
   }
 
   if (error) {
-    return <div style={{ color: 'red' }}>Ошибка загрузки данных.</div>;
+    return <div className='text-red-500'>Ошибка загрузки данных.</div>;
   }
 
   const itemsToDisplay = data[databaseName];
